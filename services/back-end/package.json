@@ -1,0 +1,37 @@
+{
+  "name": "company-operations-journal-backend",
+  "version": "0.0.0",
+  "description": "Backend for company operations journal",
+  "main": "app.js",
+  "scripts": {
+    "dev": "webpack",
+    "serve": "cross-env NODE_ENV=development nodemon build/index.js",
+    "start": "cross-env NODE_ENV=production node app.js"
+  },
+  "author": "Marcin Jerzak <jerzakm@gmail.com>",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cors": "^2.8.5",
+    "cross-env": "^6.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.7",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/express": "^4.17.2",
+    "@types/mongoose": "^5.5.32",
+    "@types/node": "^12.12.8",
+    "@types/passport": "^1.0.1",
+    "nodemon": "^1.19.4",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-shell-plugin": "^0.5.0"
+  }
+}
