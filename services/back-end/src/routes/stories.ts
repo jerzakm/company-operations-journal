@@ -1,7 +1,8 @@
-const express = require('express')
+import * as express from 'express'
+import * as mongoose from 'mongoose'
+import * as passport from 'passport'
+
 const router = express.Router()
-const mongoose = require('mongoose')
-const passport = require('passport')
 const Story = mongoose.model('Story')
 const Comment = mongoose.model('Comment')
 
@@ -12,12 +13,12 @@ router.get('/', async (req, res) => {
     .skip(+req.query.offset || 0)
     .sort(
       req.query.sort === 'top' ?
-      {
-        'score': -1
-      } :
-      {
-        'createdAt': -1
-      }
+        {
+          'score': -1
+        } :
+        {
+          'createdAt': -1
+        }
     )
   res.json({
     data: stories,

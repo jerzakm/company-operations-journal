@@ -1,13 +1,16 @@
-const express = require('express')
+import * as express from 'express'
+import * as mongoose from 'mongoose'
+
 const router = express.Router()
-const mongoose = require('mongoose')
 const User = mongoose.model('User')
 
 router.post('/register', async (req, res, next) => {
   try {
     const user = await (new User({
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
+      name: 'test',
+      group: 'test'
     }).save())
     res.json({
       _id: user._id,

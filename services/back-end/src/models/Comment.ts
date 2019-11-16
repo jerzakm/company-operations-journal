@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import * as mongoose from 'mongoose'
 
 const commentSchema = new mongoose.Schema({
   content: {
@@ -10,15 +10,15 @@ const commentSchema = new mongoose.Schema({
     default: 0
   },
   story: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Story'
   },
   parent: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Comment'
   },
   user: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
   createdAt: {
@@ -35,7 +35,7 @@ commentSchema.virtual('replies', {
   foreignField: 'parent'
 })
 
-function autoPopulate (next) {
+function autoPopulate(next) {
   this.populate('replies')
   this.populate('user')
   next()

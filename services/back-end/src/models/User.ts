@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import * as mongoose from 'mongoose'
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -9,6 +9,16 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   password: {
+    type: String,
+    required: true,
+    select: false
+  },
+  name: {
+    type: String,
+    required: true,
+    select: false
+  },
+  group: {
     type: String,
     required: true,
     select: false
@@ -31,7 +41,8 @@ userSchema.methods.getToken = function () {
 }
 
 userSchema.pre('save', async function (next) {
-  this.password = await bcrypt.hash(this.password, 10)
+  const user: any = this
+  user.password = await bcrypt.hash(user.password, 10)
   next()
 })
 

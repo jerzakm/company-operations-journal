@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import * as mongoose from 'mongoose'
 
 const storySchema = new mongoose.Schema({
   title: {
@@ -16,7 +16,7 @@ const storySchema = new mongoose.Schema({
     default: 0
   },
   user: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
   createdAt: {
@@ -34,7 +34,7 @@ storySchema.virtual('commentsCount', {
   count: true
 })
 
-function autoPopulate (next) {
+function autoPopulate(next) {
   this.populate('commentsCount')
   this.populate('user')
   next()
