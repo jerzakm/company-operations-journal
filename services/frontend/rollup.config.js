@@ -7,7 +7,7 @@ import {
 	terser
 } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup.js'
-import pkg from './package.json.js'
+import pkg from './package.json'
 import dotenv from 'dotenv'
 import typescript from 'rollup-plugin-typescript'
 
