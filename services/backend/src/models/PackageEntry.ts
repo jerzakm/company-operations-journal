@@ -118,7 +118,7 @@ const returnReasonSchema = new Schema({
 })
 
 export interface ReturnEntry extends Document {
-    returnId: number
+    id: number
     timestamp: number
     address: Address
     saleSource: string
@@ -134,7 +134,7 @@ export interface ReturnEntry extends Document {
 }
 
 const returnEntrySchema = new Schema({
-  returnId: {
+  id: {
     type: Number,
     required: true
   },
@@ -186,4 +186,55 @@ const returnEntrySchema = new Schema({
     type: [String],
     required: true
   }
+})
+
+export interface PickupEntry extends Document {
+  id: number
+  timestamp: number
+  address: Address
+  productEntryList: ProductEntry[]
+  pickupReason: ReturnReason
+  pickupTimestamp: number
+  pickupTracking: string
+  status: string
+  returnEntryId: number
+}
+
+const pickupEntrySchema = new Schema({
+  id: {
+    type: Number,
+    required: true
+  },
+  timestamp: {
+    type: Number,
+    required: true
+  },
+  address: {
+    type: addressSchema,
+    required: true
+  },
+  productEntryList: {
+    type: [productEntrySchema],
+    required: true
+  },
+  pickupReason: {
+    type: returnReasonSchema,
+    required: true
+  },
+  pickupTimestamp: {
+    type: Number,
+    required: true
+  },
+  pickupTracking: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    required: true
+  },
+  returnEntryId: {
+    type: Number,
+    required: true
+  },
 })
