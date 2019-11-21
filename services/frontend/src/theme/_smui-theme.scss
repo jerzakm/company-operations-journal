@@ -1,0 +1,42 @@
+//
+// MDC Theme
+//
+
+@import "@material/theme/color-palette";
+
+// Svelte Colors!
+$mdc-theme-primary: #121212;
+$mdc-theme-secondary: hsl(147, 100%, 65%);
+// Other Svelte color: #40b3ff
+
+$mdc-theme-background: #fff;
+$mdc-theme-surface: #fff;
+
+$mdc-theme-error: $material-color-red-900;
+
+//
+// MDC Elevation
+//
+@import "@material/elevation/mdc-elevation";
+
+//
+// Demo Code
+//
+
+@import "@material/theme/mixins";
+
+.my-primary {
+  @include mdc-theme-prop(color, primary);
+
+  &.elevated {
+    @include mdc-elevation(4, primary);
+  }
+}
+
+.my-secondary {
+  @include mdc-theme-prop(color, secondary);
+
+  &.elevated {
+    @include mdc-elevation(4, secondary);
+  }
+}

@@ -1,54 +1,60 @@
 <script>
-  import { goto, stores } from '@sapper/app'
-  import axios from 'axios'
+  import { goto, stores } from "@sapper/app";
+  import axios from "axios";
+  import Button, { Group, GroupItem, Label, Icon } from "@smui/button";
+  import Menu from "@smui/menu";
+  import List, { Item, Separator, Text } from "@smui/list";
 
-  const { session } = stores()
+  const { session } = stores();
 
-  async function logout () {
-    await axios.post('/auth/logout')
-    $session.user = null
-    goto('/')
+  async function logout() {
+    await axios.post("/auth/logout");
+    $session.user = null;
+    goto("/");
   }
 </script>
 
-<nav class="navbar">
+<style>
+  .navbar {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar .logo {
+    font-size: 22px;
+    font-weight: 500;
+    color: #121212;
+    text-decoration: none;
+  }
+
+  .navbar .username {
+    color: #121212;
+  }
+</style>
+
+<nav class="navbar mdc-elevation--z2 flexy-boy">
   <div class="navbar-left">
-  	<a
-  		class="logo"
-  		href="/"
-  	>
-  		News App
-  	</a>
+    <a class="logo" href="/">Company Operations Journal</a>
   </div>
   <div class="navbar-right">
     {#if $session.user}
       <span class="username">
         {$session.user.username}
-        <span
-          class="logout-button"
-          on:click="{logout}"
-        >
-          logout
-        </span>
+        <span class="logout-button" on:click={logout}>logout</span>
       </span>
-      <a
-        href="/story/create"
-        class="new-story-button primary-button"
-      >
-        New Story
-      </a>
     {:else}
-      <a
-        class="navbar-link"
-        href="/login"
-      >
-        Log in
+      <a class="navbar-link" href="/login">
+        Log In
+        <Button>
+          <Label>Log In</Label>
+        </Button>
       </a>
-      <a
-        class="navbar-link"
-        href="/signup"
-      >
-        Sign up
+      <a class="navbar-link" href="/signup">
+        <Button>
+          <Label>Sign up</Label>
+        </Button>
       </a>
     {/if}
   </div>
