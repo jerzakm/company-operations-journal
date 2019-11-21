@@ -298,17 +298,7 @@ code {
 	margin-left: 4px;
 }
 
-.login-form,
-.signup-form {
-	display: flex;
-	flex-direction: column;
-	padding: 20px;
-	max-width: 400px;
-	background: #F5F5F5;
-	width: calc(100% - 20px);
-	margin: 50px auto;
-	border-radius: 2px;
-}
+
 
 .text-input {
 	border: 1px solid #ccc;
