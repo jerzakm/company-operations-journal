@@ -3,13 +3,9 @@
   import axios from "axios";
 
   import Textfield, { Input, Textarea } from "@smui/textfield";
-  import Icon from "@smui/textfield/icon/index";
   import HelperText from "@smui/textfield/helper-text/index";
-  import CharacterCounter from "@smui/textfield/character-counter/index";
-  import { Icon as CommonIcon } from "@smui/common";
-  import FloatingLabel from "@smui/floating-label";
-  import LineRipple from "@smui/line-ripple";
-  import NotchedOutline from "@smui/notched-outline";
+  import Card from '@smui/card'
+  import Button, {Label} from '@smui/button'
 
   const { session } = stores();
 
@@ -39,11 +35,10 @@
   .login-form {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    max-width: 400px;
-    background: #f5f5f5;
+    max-width: 500px;
     width: calc(100% - 20px);
     margin: 50px auto;
+    padding: 50px;
     border-radius: 2px;
   }
 </style>
@@ -53,7 +48,8 @@
 </svelte:head>
 
 <form class="login-form" on:submit|preventDefault={submit}>
-  {#if error}
+  <Card padded>
+{#if error}
     <span class="error-message">{error}</span>
   {/if}
   <div>
@@ -64,7 +60,9 @@
       input$aria-controls="helper-text-standard-b"
       input$aria-describedby="helper-text-standard-b"
       type="text"
-      aria-required="true" />
+      aria-required="true"
+      style="width: 100%;"
+      />
     <HelperText id="helper-text-standard-b">Enter your username</HelperText>
   </div>
 
@@ -76,10 +74,13 @@
       input$aria-controls="helper-text-standard-b"
       input$aria-describedby="helper-text-standard-b"
       type="password"
+      style="width: 100%;"
       aria-required="true" />
     <HelperText id="helper-text-standard-b">Enter your password</HelperText>
   </div>
-  <button class="login-button primary-button" disabled={inProgress}>
+  <!-- <button class="login-button primary-button" disabled={inProgress}>
     LOG IN
-  </button>
+  </button> -->
+  <Button variant="raised" style="margin-top: 20px;"><Label>Log In</Label></Button>
+  </Card>
 </form>

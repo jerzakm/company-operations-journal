@@ -20,6 +20,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #fff;
   }
 
   .navbar .logo {
@@ -46,7 +47,6 @@
       </span>
     {:else}
       <a class="navbar-link" href="/login">
-        Log In
         <Button>
           <Label>Log In</Label>
         </Button>
