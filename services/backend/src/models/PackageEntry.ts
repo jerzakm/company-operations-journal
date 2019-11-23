@@ -1,99 +1,99 @@
-import {Document, Schema}  from 'mongoose'
+import { Document, Schema, model } from 'mongoose'
 
 export interface Address {
-    name: string
-    street: string
-    postCode: string
-    city: string
+  name: string
+  street: string
+  postCode: string
+  city: string
 }
 
 const addressSchema = new Schema({
-        name: {
-            type: String,
-            required: true
-        },
-        street: {
-            type: String,
-            required: true
-        },
-        postCode: {
-            type: String,
-            required: true
-        },
-        city: {
-            type: String,
-            required: true
-        }
-    })
+  name: {
+    type: String,
+    required: true
+  },
+  street: {
+    type: String,
+    required: true
+  },
+  postCode: {
+    type: String,
+    required: true
+  },
+  city: {
+    type: String,
+    required: true
+  }
+})
 
 export interface Product {
-    symbol: string
-    name: string
-    price: number
-    category: string
+  symbol: string
+  name: string
+  price: number
+  category: string
 }
 
 const productSchema = new Schema({
-    symbol:{
-        type: String,
-        required: true
-    },
-    name:{
-        type: String,
-        required: true
-    },
-    price:{
-        type: Number,
-        required: true
-    },
-    category:{
-        type: String,
-        required: true
-    },
+  symbol: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
 })
 
 export interface ProductEntry {
-    quantity: number
-    productState: string
-    uuid: string
-    product: Product
+  quantity: number
+  productState: string
+  uuid: string
+  product: Product
 }
 
 const productEntrySchema = new Schema(
-    {
-        quantity: {
-            type: Number,
-            required: true
-        },
-        productState: {
-            type: String,
-            required: true
-        },
-        uuid: {
-            type: String,
-            required: true
-        },
-        product: {
-            type: productSchema,
-            required: true
-        }
+  {
+    quantity: {
+      type: Number,
+      required: true
+    },
+    productState: {
+      type: String,
+      required: true
+    },
+    uuid: {
+      type: String,
+      required: true
+    },
+    product: {
+      type: productSchema,
+      required: true
     }
+  }
 )
 
 export interface AttachedDocument {
-    type: string
-    value: string
+  type: string
+  value: string
 }
 
 const attachedDocumentSchema = new Schema({
-    type:{
-        type: String,
-        required: true
-    },
-    value:{
-        type: String,
-        required: true
-    }
+  type: {
+    type: String,
+    required: true
+  },
+  value: {
+    type: String,
+    required: true
+  }
 })
 
 export interface ReturnReason {
@@ -103,34 +103,34 @@ export interface ReturnReason {
 }
 
 const returnReasonSchema = new Schema({
-  group:{
-      type: String,
-      required: true
+  group: {
+    type: String,
+    required: true
   },
-  name:{
-      type: String,
-      required: true
+  name: {
+    type: String,
+    required: true
   },
-  desc:{
-      type: String,
-      required: true
+  desc: {
+    type: String,
+    required: true
   },
 })
 
 export interface ReturnEntry extends Document {
-    id: number
-    timestamp: number
-    address: Address
-    saleSource: string
-    attachedDocuments: AttachedDocument[]
-    returnReason: ReturnReason
-    pickupOrderId: number
-    pickupOrderTimestamp: number
-    productEntryList: ProductEntry[]
-    movedTo: string
-    resolved: boolean
-    notepad: string
-    changeHistory: string[]
+  id: number
+  timestamp: number
+  address: Address
+  saleSource: string
+  attachedDocuments: AttachedDocument[]
+  returnReason: ReturnReason
+  pickupOrderId: number
+  pickupOrderTimestamp: number
+  productEntryList: ProductEntry[]
+  movedTo: string
+  resolved: boolean
+  notepad: string
+  changeHistory: string[]
 }
 
 const returnEntrySchema = new Schema({
@@ -180,11 +180,11 @@ const returnEntrySchema = new Schema({
   },
   notepad: { //TODO better notepad handling?
     type: String,
-    required: true
+    required: false
   },
   changeHistory: { // TODO better
     type: [String],
-    required: true
+    required: false
   }
 })
 
@@ -238,3 +238,6 @@ const pickupEntrySchema = new Schema({
     required: true
   },
 })
+
+module.exports = model('PickupEntry', pickupEntrySchema)
+module.exports = model('ReturnEntry', returnEntrySchema)

@@ -18,6 +18,7 @@ mongoose.connection.on('error', (err) => {
 require('./models/Story.ts')
 require('./models/Comment.ts')
 require('./models/User.ts')
+require('./models/PackageEntry.ts')
 
 require('./handlers/passport')
 
@@ -32,6 +33,7 @@ app.get('/', (req, res) => {
 app.use('/', require('./routes/users.ts'))
 app.use('/', require('./routes/auth.ts'))
 app.use('/stories', require('./routes/stories.ts'))
+app.use('/returnsList', require('./routes/returnslist.ts'))
 
 app.use((req, res) => {
   res
