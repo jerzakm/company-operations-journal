@@ -82,7 +82,7 @@
   }
 </style>
 
-<nav class="mdc-elevation--z5">
+<nav class="mdc-elevation--z2">
   <nav class="navbar">
     <div class="navbar-left">
       <a class="logo" href="/">Company Operations Journal</a>

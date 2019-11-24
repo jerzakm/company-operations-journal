@@ -1,6 +1,7 @@
 <script>
   import { stores } from "@sapper/app";
   import * as api from "api";
+  import DataTable, { Head, Body, Row, Cell } from "@smui/data-table";
 
   const { page } = stores();
 
@@ -41,9 +42,35 @@
 {:else if stories.length === 0}
   Returns list is empty
 {:else}
-  <ol class="story-list">
-    {#each stories as story}
-      <h1>story</h1>
-    {/each}
-  </ol>
+  <ol class="story-list" />
+  <div>
+    <DataTable table$aria-label="Returns list">
+      <Head>
+        <Row>
+          <Cell>#</Cell>
+          <Cell>Sender</Cell>
+          <Cell>Time</Cell>
+          <Cell>Product</Cell>
+          <Cell>Sale source</Cell>
+          <Cell>Return Reason</Cell>
+          <Cell>Moved to</Cell>
+          <Cell>Status</Cell>
+        </Row>
+      </Head>
+      <Body>
+        {#each stories as story}
+          <Row>
+            <Cell>{story.id}</Cell>
+            <Cell>{story.address.name}</Cell>
+            <Cell>Time</Cell>
+            <Cell>Product</Cell>
+            <Cell>Sale source</Cell>
+            <Cell>Return Reason</Cell>
+            <Cell>Moved to</Cell>
+            <Cell>Status</Cell>
+          </Row>
+        {/each}
+      </Body>
+    </DataTable>
+  </div>
 {/if}
