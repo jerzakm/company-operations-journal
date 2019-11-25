@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "backend-dev":"cd services/backend && npm run-script dev",
-    "frontend-dev":"cd services/frontend && npm run-script dev"
+    "backend-dev": "cd services/backend && npm run-script dev",
+    "frontend-dev": "cd services/frontend && npm run-script dev"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/jerzakm/company-operations-journal/issues"
   },
-  "homepage": "https://github.com/jerzakm/company-operations-journal#readme"
+  "homepage": "https://github.com/jerzakm/company-operations-journal#readme",
+  "dependencies": {
+    "svelte-select": "^3.1.2"
+  }
 }

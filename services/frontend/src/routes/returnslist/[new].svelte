@@ -9,8 +9,9 @@
   import NotchedOutline from "@smui/notched-outline";
   import Dialog, { Title, Content, Actions, InitialFocus } from "@smui/dialog";
   import Button, { GroupItem, Label } from "@smui/button";
-  import Select from "@smui/select";
+  import Select from 'svelte-select';
   import Card from "@smui/card";
+  import DataTable, {Head, Body, Row, Cell} from '@smui/data-table';
 
   $: returnEntry = {
     id: 0,
@@ -36,98 +37,107 @@
     notepad: "",
     changeHistory: []
   };
+
+  const items = [
+		{value: 'chocolate', label: '🍫 Chocolate', group: 'Sweet'},
+    {value: 'pizza', label: '🍕 Pizza', group: 'Savory'},
+    {value: 'cake', label: '🎂 Cake', group: 'Sweet'},
+    {value: 'cookies', label: '🍪 Cookies', group: 'Savory'},
+    {value: 'ice-cream', label: '🍦 Ice Cream', group: 'Sweet'}
+  ];
+  let selectedValue = undefined;
 </script>
 
 <style>
-
+  .content-group {
+    padding: 1rem;
+  }
+  .content-container {
+    display: flex;
+    flex-direction: column;
+  }
 </style>
 
 <div class="module-content-centered">
-  <Card>
+  <Card style="max-width: 80vw;">
+  <div class="content-container">
+  <div class="content-group">
     <Title>Sender</Title>
-    <Content>
-      <div>
-        <Textfield
-          variant="filled"
-          bind:value={returnEntry.address.name}
-          label="Name"
-          style="width: 100%;" />
-        <HelperText id="helper-text-filled-a">Enter sender's name</HelperText>
-      </div>
-      <div>
-        <Textfield
-          variant="filled"
-          bind:value={returnEntry.address.street}
-          style="width: 100%;"
-          label="Street" />
-        <HelperText id="helper-text-filled-a">
-          Enter sender's street name and number
-        </HelperText>
-      </div>
-      <div style="display: flex;">
         <div>
           <Textfield
             variant="filled"
-            bind:value={returnEntry.address.postCode}
-            style="margin-right: 5px; max-width: 140px;"
-            label="Post Code" />
+            bind:value={returnEntry.address.name}
+            label="Name"
+            style="width: 100%;" />
+          <HelperText id="helper-text-filled-a">Enter sender's name</HelperText>
+        </div>
+        <div>
+          <Textfield
+            variant="filled"
+            bind:value={returnEntry.address.street}
+            style="width: 100%;"
+            label="Street" />
           <HelperText id="helper-text-filled-a">
-            Enter sender's postal code
+            Enter sender's street name and number
           </HelperText>
         </div>
-        <div>
-          <Textfield
-            variant="filled"
-            bind:value={returnEntry.address.city}
-            style="width: 100%;"
-            label="City" />
-          <HelperText id="helper-text-filled-a">Enter sender's city</HelperText>
+        <div style="display: flex;">
+          <div>
+            <Textfield
+              variant="filled"
+              bind:value={returnEntry.address.postCode}
+              style="margin-right: 5px; max-width: 140px;"
+              label="Post Code" />
+            <HelperText id="helper-text-filled-a">
+              Enter sender's postal code
+            </HelperText>
+          </div>
+          <div>
+            <Textfield
+              variant="filled"
+              bind:value={returnEntry.address.city}
+              style="width: 100%;"
+              label="City" />
+            <HelperText id="helper-text-filled-a">Enter sender's city</HelperText>
+          </div>
         </div>
-      </div>
-    </Content>
-  </Card>
+        </div>
+        <div class="content-group">
+          <Title>Product list</Title>
+          <DataTable table$aria-label="Product list">
+      <Head>
+        <Row>
+          <Cell>Product</Cell>
+          <Cell>Quantity</Cell>
+          <Cell>State</Cell>
+          <Cell>Actions</Cell>
+        </Row>
+      </Head>
+      <Body>
+        <Row>
+          <Cell>Office Chair 123125</Cell>
+          <Cell>1</Cell>
+          <Cell>45</Cell>
+          <Cell>45</Cell>
+        </Row>
+        <Row>
+          <Cell>Mack</Cell>
+          <Cell>Blue</Cell>
+          <Cell numeric>12</Cell>
+          <Cell numeric>12</Cell>
+        </Row>
+      </Body>
+    </DataTable>
+        </div>
+    <div class="content-group">
+      <Title>Return reason</Title>
+      <Select {items} bind:selectedValue></Select>
+      <Title>Sale source</Title>
+      <Select {items} bind:selectedValue></Select>
+    </div>
+    <div class="content-group">
 
-  <Card>
-    <Title>Sender</Title>
-    <Content>
-      <div>
-        <Textfield
-          variant="filled"
-          bind:value={returnEntry.address.name}
-          label="Name"
-          style="width: 100%;" />
-        <HelperText id="helper-text-filled-a">Enter sender's name</HelperText>
-      </div>
-      <div>
-        <Textfield
-          variant="filled"
-          bind:value={returnEntry.address.street}
-          style="width: 100%;"
-          label="Street" />
-        <HelperText id="helper-text-filled-a">
-          Enter sender's street name and number
-        </HelperText>
-      </div>
-      <div style="display: flex;">
-        <div>
-          <Textfield
-            variant="filled"
-            bind:value={returnEntry.address.postCode}
-            style="margin-right: 5px; max-width: 140px;"
-            label="Post Code" />
-          <HelperText id="helper-text-filled-a">
-            Enter sender's postal code
-          </HelperText>
-        </div>
-        <div>
-          <Textfield
-            variant="filled"
-            bind:value={returnEntry.address.city}
-            style="width: 100%;"
-            label="City" />
-          <HelperText id="helper-text-filled-a">Enter sender's city</HelperText>
-        </div>
-      </div>
-    </Content>
+    </div>
+    </div>
   </Card>
 </div>
