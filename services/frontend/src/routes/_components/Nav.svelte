@@ -37,14 +37,8 @@
     {
       k: 3,
       icon: "code",
-      label: "Test",
-      route: "/"
-    },
-    {
-      k: 4,
-      icon: "code",
-      label: "Test",
-      route: "/"
+      label: "Admin",
+      route: "/admin"
     }
   ];
 
