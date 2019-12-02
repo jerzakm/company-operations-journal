@@ -20,7 +20,7 @@ require('./models/Comment.ts')
 require('./models/User.ts')
 require('./models/PackageEntry.ts')
 
-require('./handlers/passport')
+require('./handlers/passport.ts')
 
 app.use(cors())
 
@@ -34,6 +34,7 @@ app.use('/', require('./routes/users.ts'))
 app.use('/', require('./routes/auth.ts'))
 app.use('/stories', require('./routes/stories.ts'))
 app.use('/returnsList', require('./routes/returnslist.ts'))
+app.use('/products', require('./routes/products.ts'))
 
 app.use((req, res) => {
   res

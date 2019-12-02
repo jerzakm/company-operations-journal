@@ -6,7 +6,7 @@ const User = mongoose.model('User')
 
 router.post('/register', async (req, res, next) => {
   try {
-    const user = await (new User({
+    const user:any = await (new User({
       username: req.body.username,
       password: req.body.password,
       name: 'test',

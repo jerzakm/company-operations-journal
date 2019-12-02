@@ -39,7 +39,7 @@ router.post(
     session: false
   }),
   async (req, res) => {
-    const story = await (new Story({
+    const story:any = await (new Story({
       title: req.body.title,
       type: req.body.type,
       content: req.body.content,
@@ -55,7 +55,7 @@ router.put(
     session: false
   }),
   async (req, res) => {
-    let story = await Story.findOne({
+    let story:any = await Story.findOne({
       _id: req.params.storyId
     })
     if (!story.user.equals(req.user._id)) {
