@@ -2,6 +2,7 @@ const app = require('express')()
 import * as cors from 'cors'
 import * as mongoose from 'mongoose'
 import * as bodyParser from 'body-parser'
+import { test } from './test'
 
 require('dotenv').config({ path: '.env' })
 
@@ -18,6 +19,7 @@ mongoose.connection.on('error', (err) => {
 require('./models/Story.ts')
 require('./models/Comment.ts')
 require('./models/User.ts')
+require('./models/Product.ts')
 require('./models/PackageEntry.ts')
 
 require('./handlers/passport.ts')
@@ -32,7 +34,6 @@ app.get('/', (req, res) => {
 
 app.use('/', require('./routes/users.ts'))
 app.use('/', require('./routes/auth.ts'))
-app.use('/stories', require('./routes/stories.ts'))
 app.use('/returnsList', require('./routes/returnslist.ts'))
 app.use('/products', require('./routes/products.ts'))
 
@@ -59,3 +60,5 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`app backend is running on port ${port}`))
+
+// test()
