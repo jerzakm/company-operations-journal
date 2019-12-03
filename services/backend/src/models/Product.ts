@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose'
-
 const productSchema = new mongoose.Schema({
   id: {
     type: Number,
@@ -7,24 +6,19 @@ const productSchema = new mongoose.Schema({
     unique: true
   },
   group: {
-    type: String,
-    required: true
+    type: String
   },
   symbol: {
-    type: String,
-    required: true
+    type: String
   },
   name: {
-    type: String,
-    required: true
+    type: String
   },
   volume: {
-    type: Number,
-    required: true
+    type: Number
   },
   weight: {
-    type: Number,
-    required: true
+    type: Number
   }
 })
 

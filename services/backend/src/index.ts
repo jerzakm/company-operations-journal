@@ -16,7 +16,6 @@ mongoose.connection.on('error', (err) => {
   console.error('Database connection error:', err)
 })
 
-require('./models/Story.ts')
 require('./models/Comment.ts')
 require('./models/User.ts')
 require('./models/Product.ts')
@@ -29,6 +28,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
+  test()
   res.end('hello world!')
 })
 
@@ -59,6 +59,5 @@ app.use((err, req, res, next) => {
 })
 
 const port = process.env.PORT || 5000
-app.listen(port, () => console.log(`app backend is running on port ${port}`))
 
-// test()
+app.listen(port, () => console.log(`app backend is running on port ${port}`))
