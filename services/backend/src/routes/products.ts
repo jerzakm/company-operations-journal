@@ -1,16 +1,21 @@
 import * as express from 'express'
 import * as passport from 'passport'
+import * as mongoose from 'mongoose'
 const fs = require('fs')
-import { subiektConnection, sendQuery } from "./handlers/subiekt"
+import { subiektConnection, sendQuery } from "../handlers/subiekt"
 
-require('./models/Product.ts')
+require('../models/Product.ts')
 const Product = mongoose.model('Product')
 
 const router = express.Router()
-const ReturnEntry = mongoose.model('ReturnEntry')
 
-router.post('/', async (req, res) => {
-
+router.get('/', async (req, res) => {
+  const products = await Product
+  .find({})
+  .limit(10)
+  res.json({
+    data: products
+})
 })
 
 /**
