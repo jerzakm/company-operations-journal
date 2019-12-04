@@ -3,6 +3,7 @@ import * as cors from 'cors'
 import * as mongoose from 'mongoose'
 import * as bodyParser from 'body-parser'
 import { test } from './test'
+import * as cachegoose from 'cachegoose'
 
 require('dotenv').config({ path: '.env' })
 

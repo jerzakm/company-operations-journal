@@ -9,13 +9,18 @@ const Product = mongoose.model('Product')
 
 const router = express.Router()
 
+let productCache
+
+
 router.get('/', async (req, res) => {
-  const products = await Product
-  .find({})
-  .limit(10)
+
+  if(!productCache) {
+    productCache = await Product.find({})
+  }
+
   res.json({
-    data: products
-})
+    data: productCache
+  })
 })
 
 /**

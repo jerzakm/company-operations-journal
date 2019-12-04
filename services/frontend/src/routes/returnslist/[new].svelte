@@ -13,6 +13,23 @@
   import Card from "@smui/card";
   import DataTable, {Head, Body, Row, Cell} from '@smui/data-table';
 
+  import * as api from "api";
+
+  let products
+
+  $: loadData();
+
+  async function loadData() {
+    try {
+      products = null;
+      const response = await api.products.getProducts();
+      products = response.data;
+      console.log(products)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   $: returnEntry = {
     id: 0,
     timestamp: 0,
