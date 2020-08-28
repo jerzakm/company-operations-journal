@@ -1,24 +1,21 @@
 {
-  "name": "company-operations-journal",
+  "name": "svelte-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "backend-dev": "cd services/backend && npm run-script dev",
-    "frontend-dev": "cd services/frontend && npm run-script dev"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jerzakm/company-operations-journal.git"
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.0.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jerzakm/company-operations-journal/issues"
-  },
-  "homepage": "https://github.com/jerzakm/company-operations-journal#readme",
   "dependencies": {
-    "svelte-select": "^3.1.2"
+    "sirv-cli": "^1.0.0"
   }
 }

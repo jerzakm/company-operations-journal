@@ -1,1 +1,0 @@
-<h1>Insights page</h1>
