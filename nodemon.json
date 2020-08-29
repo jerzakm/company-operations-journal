@@ -1,0 +1,4 @@
+{
+  "verbose": true,
+  "ignore": ["backend.js.map", "client/*"]
+}
