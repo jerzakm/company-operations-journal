@@ -1,9 +1,11 @@
 {
-  "name": "allegro-rest-typescript",
+  "name": "company-operations-dashboard-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build-backend": "webpack"
+    "build:dev": "tsc -w",
+    "serve:dev": "nodemon build/index.js --config nodemon.json",
+    "start-dev": "concurrently \"npm:build:dev\" \"npm:serve:dev\""
   },
   "repository": {
     "type": "git",
@@ -11,21 +13,17 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jerzakm/allegro-rest-typescript/issues"
-  },
-  "homepage": "https://github.com/jerzakm/allegro-rest-typescript#readme",
   "description": "",
   "devDependencies": {
     "@types/express": "^4.17.7",
     "@types/node": "^14.6.2",
-    "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "ts-loader": "^8.0.3",
+    "tsc": "^1.20150623.0",
     "typescript": "^4.0.2",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-node-externals": "^2.5.2"
+    "concurrently": "^5.3.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

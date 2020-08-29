@@ -7,4 +7,6 @@ const app = new App({
   },
 })
 
+console.log('581321342132')
+
 export default app

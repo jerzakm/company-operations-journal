@@ -7,6 +7,7 @@ import {
 } from 'rollup-plugin-terser'
 import sveltePreprocess from 'svelte-preprocess'
 import typescript from '@rollup/plugin-typescript'
+import copy from 'rollup-plugin-copy'
 
 const production = !process.env.ROLLUP_WATCH
 
@@ -40,7 +41,7 @@ export default {
     sourcemap: true,
     format: 'iife',
     name: 'app',
-    file: 'public/client/build/bundle.js',
+    file: 'public/build/bundle.js',
   },
   plugins: [
     svelte({
@@ -68,9 +69,18 @@ export default {
       sourceMap: !production,
     }),
 
+    copy({
+      targets: [{
+        src: 'public/*',
+        dest: '../backend/build/public/client'
+      }],
+      overwrite: true,
+      verbose: true,
+    }),
+
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    !production && livereload('public/client'),
+    !production && livereload('public'),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify

@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "sourceMap": true,
-    "lib": [ "es2015" ]
-  }
-}
