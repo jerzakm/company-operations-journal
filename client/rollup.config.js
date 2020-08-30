@@ -7,33 +7,10 @@ import {
 } from 'rollup-plugin-terser'
 import sveltePreprocess from 'svelte-preprocess'
 import typescript from '@rollup/plugin-typescript'
-import copy from 'rollup-plugin-copy'
+import path from 'path'
+import postcss from 'rollup-plugin-postcss'
 
 const production = !process.env.ROLLUP_WATCH
-
-function serve() {
-  let server
-
-  function toExit() {
-    if (server) server.kill(0)
-  }
-
-  return {
-    writeBundle() {
-      if (server) return
-      server = require('child_process').spawn(
-        'npm',
-        ['run', 'start', '--', '--dev'], {
-          stdio: ['ignore', 'inherit', 'inherit'],
-          shell: true,
-        }
-      )
-
-      process.on('SIGTERM', toExit)
-      process.on('exit', toExit)
-    },
-  }
-}
 
 export default {
   input: 'src/main.ts',
@@ -54,6 +31,11 @@ export default {
       },
       preprocess: sveltePreprocess(),
     }),
+    postcss({
+      extract: true,
+      // Or with custom file name
+      extract: 'global.css'
+    }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -68,16 +50,6 @@ export default {
     typescript({
       sourceMap: !production,
     }),
-
-    copy({
-      targets: [{
-        src: 'public/*',
-        dest: '../backend/build/public/client'
-      }],
-      overwrite: true,
-      verbose: true,
-    }),
-
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
     !production && livereload('public'),

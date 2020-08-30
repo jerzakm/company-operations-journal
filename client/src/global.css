@@ -8,7 +8,7 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #F7F2EF;
+  background-color: #faf7f5;
   color: #121212;
   font-weight: 500;
   /* text-shadow: 0 0 1px #121212; */
@@ -22,8 +22,6 @@ h3 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
-
-
 
 h1 {
   font-size: 4.5rem;
@@ -42,11 +40,11 @@ a {
 }
 
 a::before {
-  content: "["
+  content: '[';
 }
 
 a::after {
-  content: "]"
+  content: ']';
 }
 
 button:focus {

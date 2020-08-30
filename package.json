@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "backend:dev": "cd backend && npm run start-dev",
-    "client:dev": "cd client && npm start"
+    "client:dev": "cd client && npm run client:dev",
+    "copy": "cpx client/public/** backend/build/public/client -v -w"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0"
   }
 }

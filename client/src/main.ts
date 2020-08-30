@@ -1,4 +1,5 @@
 import App from './App.svelte'
+import './global.css'
 
 const app = new App({
   target: document.body,
@@ -6,7 +7,5 @@ const app = new App({
     name: 'world',
   },
 })
-
-console.log('581321342132')
 
 export default app
