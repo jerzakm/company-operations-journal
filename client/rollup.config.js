@@ -42,14 +42,14 @@ export default {
     // some cases you'll need additional configuration -
     // consult the documentation for details:
     // https://github.com/rollup/plugins/tree/master/packages/commonjs
+    typescript({
+      sourceMap: !production,
+    }),
     resolve({
       browser: true,
       dedupe: ['svelte'],
     }),
     commonjs(),
-    typescript({
-      sourceMap: !production,
-    }),
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
     !production && livereload('public'),

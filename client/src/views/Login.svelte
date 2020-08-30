@@ -1,3 +1,16 @@
+<script>
+  import { userAuth } from '../stores.ts'
+  // import { onMount } from 'svelte'
+
+  userAuth.subscribe((u) => {
+    console.log(u)
+  })
+
+  // onMount(() => {})
+
+  function login() {}
+</script>
+
 <container class="fixed h-screen w-screen flex items-center justify-center">
   <div>
     <h2 class="pl-4">Zaloguj się</h2>
@@ -8,16 +21,15 @@
         <label
           for="name"
           class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">
-          Name
+          Login
         </label>
 
         <div class="relative">
 
           <input
-            id="name"
-            name="name"
+            name="userId"
             type="text"
-            placeholder="Name"
+            placeholder="Login"
             value=""
             class="text-sm sm:text-base relative w-full border rounded
             placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2
@@ -29,16 +41,15 @@
         <label
           for="name"
           class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">
-          Name
+          Hasło
         </label>
 
         <div class="relative">
 
           <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Name"
+            name="password"
+            type="password"
+            placeholder="Hasło"
             value=""
             class="text-sm sm:text-base relative w-full border rounded
             placeholder-gray-400 focus:border-indigo-400 focus:outline-none py-2
@@ -51,6 +62,13 @@
           text-xs mt-1 ml-1">
           Invalid username field !
         </span>
+        <button
+          type="button"
+          class="btn-primary transition duration-300 ease-in-out
+          focus:outline-none focus:shadow-outline bg-porange-500 text-white
+          font-normal py-2 px-4 mr-1 rounded">
+          Zaloguj się
+        </button>
       </div>
     </div>
   </div>
